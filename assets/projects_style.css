@@ -219,11 +219,6 @@ body {
     .projects-grid {
         grid-template-columns: 1fr;
     }
-    
-    .nav-links {
-        gap: 1rem;
-        flex-wrap: wrap;
-    }
 
     .github-section {
         margin: 1rem;
