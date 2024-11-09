@@ -71,7 +71,7 @@ body {
 
 /* Project Card Styling */
 .project-card {
-    background: var(--card-bg);
+    background: var(--primary-bg);
     color: var(--card-text);
     padding: 1.5rem;
     border-radius: 10px;
