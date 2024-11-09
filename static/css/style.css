@@ -1,9 +1,42 @@
+:root {
+    --primary: #2d3436;
+    --secondary: #00cec9;
+    --accent: #fd79a8;
+    --text: #2d3436;
+    --background: #111231;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    color: var(--text);
+    background: var(--background);
+    overflow-x: hidden;
+}
+
+/* Navigation */
 .nav {
+    padding-top: 0%;
     padding: 1rem 2rem;
     position: fixed;
     width: 100%;
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(6, 141, 11, 0.95);
     backdrop-filter: blur(10px);
     z-index: 1000;
     transition: all 0.3s ease;
+}
+
+.nav-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    list-style: none;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text);
+    font-weight: 500;
+    position: relative;
+    padding: 0.5rem 0;
 }
