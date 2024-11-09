@@ -1,37 +1,57 @@
-* {
+:root {
+    --primary-bg: #1e272e;
+    --primary-text: #dcdde1;
+    --highlight: #00a8ff;
+    --accent: #fbc531;
+    --card-bg: #353b48;
+    --card-text: #ffffff;
+    --nav-bg: rgba(30, 39, 46, 0.85);
+}
+
+/* General Body Styling */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--primary-bg);
+    color: var(--primary-text);
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    overflow-x: hidden;
 }
 
-body {
-    font-family: Arial, sans-serif;
-    background-color: #1a1a1a;
-    color: white;
-}
-
+/* Navigation Bar Styling */
 .nav {
-    padding: 1rem;
-    background-color: #2d2d2d;
+    background: var(--nav-bg);
+    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background 0.3s ease;
 }
 
 .nav-links {
+    list-style: none;
     display: flex;
     justify-content: center;
     gap: 2rem;
-    list-style: none;
+    margin: 0;
 }
 
 .nav-links a {
-    color: white;
+    color: var(--primary-text);
     text-decoration: none;
+    font-weight: 500;
     font-size: 1.1rem;
-    transition: color 0.3s;
+    padding: 0.5rem;
+    transition: color 0.3s ease;
 }
 
 .nav-links a:hover {
-    color: #00b8d4;
+    color: var(--highlight);
 }
+
 
 .projects {
     padding: 2rem;
@@ -48,7 +68,7 @@ body {
 
 .project-card {
     text-decoration: none; /* Remove default link styling */
-    background-color: #2d2d2d;
+    background-color: var(--card-bg);
     border-radius: 8px;
     overflow: hidden;
     transition: transform 0.3s, box-shadow 0.3s;
