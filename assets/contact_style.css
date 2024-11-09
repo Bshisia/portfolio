@@ -160,4 +160,9 @@ button:hover {
     width: 35px;
     height: 35px;
   }
+
+  .nav-links {
+    gap: 0.5em;
+    padding-left: 0%;
+  }
 }

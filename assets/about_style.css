@@ -177,7 +177,7 @@ body {
     }
     
     .nav-links {
-        gap: 1rem;
-        flex-wrap: wrap;
+        gap: 0.5rem;
+        padding-left: 0%;
     }
 }

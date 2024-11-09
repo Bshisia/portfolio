@@ -151,8 +151,10 @@ body {
     }
     
     .nav-links {
-        gap: 1rem;
-        flex-wrap: wrap;
+        padding-left: 0%;
+        margin-left: 0%;
+        gap: 0.5rem;
+        font-size: 8;
     }
 }
 
