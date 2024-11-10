@@ -5,7 +5,9 @@
     --accent: #fbc531;
     --card-bg: #353b48;
     --card-text: #ffffff;
-    --nav-bg: rgba(30, 39, 46, 0.85);
+    --nav-bg: rgba(30, 39, 46, 0.95);
+    --card-hover-shadow: rgba(0, 184, 212, 0.2);
+    --card-gradient: rgba(0, 184, 212, 0.9);
 }
 
 /* General Body Styling */
@@ -16,42 +18,63 @@ body {
     margin: 0;
     padding: 0;
     overflow-x: hidden;
+    min-height: 100vh;
+    line-height: 1.6;
 }
 
 /* Navigation Bar Styling */
 .nav {
     background: var(--nav-bg);
-    padding: 1rem 0;
+    padding: clamp(0.5rem, 2vw, 1rem);
     position: fixed;
     width: 100%;
     top: 0;
     left: 0;
     z-index: 10;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: background 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
 }
 
 .nav-links {
     list-style: none;
     display: flex;
     justify-content: center;
-    gap: 2rem;
+    align-items: center;
+    gap: clamp(0.5rem, 3vw, 2rem);
     margin: 0;
+    padding: 0;
+    flex-wrap: wrap;
 }
 
 .nav-links a {
     color: var(--primary-text);
     text-decoration: none;
     font-weight: 500;
-    font-size: 1.1rem;
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
     padding: 0.5rem;
-    transition: color 0.3s ease;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 50%;
+    background-color: var(--highlight);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.nav-links a:hover::after {
+    width: 100%;
 }
 
 .nav-links a:hover {
     color: var(--highlight);
 }
-
 
 .page {
     max-width: 1200px;

@@ -5,7 +5,9 @@
     --accent: #fbc531;
     --card-bg: #353b48;
     --card-text: #ffffff;
-    --nav-bg: rgba(30, 39, 46, 0.85);
+    --nav-bg: rgba(30, 39, 46, 0.95);
+    --card-hover-shadow: rgba(0, 184, 212, 0.2);
+    --card-gradient: rgba(0, 184, 212, 0.9);
 }
 
 /* General Body Styling */
@@ -17,20 +19,20 @@ body {
     padding: 0;
     overflow-x: hidden;
     min-height: 100vh;
-    width: 100%;
+    line-height: 1.6;
 }
 
 /* Navigation Bar Styling */
 .nav {
     background: var(--nav-bg);
-    padding: 1rem;
+    padding: clamp(0.5rem, 2vw, 1rem);
     position: fixed;
     width: 100%;
     top: 0;
     left: 0;
     z-index: 10;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
 }
 
 .nav-links {
@@ -38,7 +40,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: clamp(1rem, 4vw, 2rem);
+    gap: clamp(0.5rem, 3vw, 2rem);
     margin: 0;
     padding: 0;
     flex-wrap: wrap;
@@ -50,14 +52,29 @@ body {
     font-weight: 500;
     font-size: clamp(0.9rem, 2vw, 1.1rem);
     padding: 0.5rem;
-    transition: color 0.3s ease;
-    white-space: nowrap;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 50%;
+    background-color: var(--highlight);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.nav-links a:hover::after {
+    width: 100%;
 }
 
 .nav-links a:hover {
     color: var(--highlight);
 }
-
 /* Hero Section */
 .owner {
     min-height: 100vh;
