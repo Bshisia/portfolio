@@ -165,4 +165,8 @@ button:hover {
     gap: 0.5em;
     padding-left: 0%;
   }
+
+  .form-group {
+    max-width: 90%;
+  }
 }

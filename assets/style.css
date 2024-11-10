@@ -136,20 +136,32 @@ body {
     transform: translateY(-2px);
 }
 
+/* Responsive design */
 @media (max-width: 768px) {
     .projects-grid {
         grid-template-columns: 1fr;
     }
-    
-    .owner-content {
-        padding-left: 10%;
-        margin-left: 10%;
-        gap: 0.2rem;
-        font-size: 8;
+
+    .nav {
+        padding-left: 0%;
     }
 
     .nav-links {
-        gap: 0.5em;
         padding-left: 0%;
+        margin-left: 0%;
+        gap: 0.5rem;
+        font-size: 8;
+    }
+
+    .owner-content {
+        padding-top: 0%;
+        margin-top: 0%;
+        font-size: small;
+    }
+
+    .owner-image {
+        min-width: 100px;
+        max-height: auto;
+        padding-top: 0%;
     }
 }
