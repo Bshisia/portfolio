@@ -5,7 +5,9 @@
     --accent: #fbc531;
     --card-bg: #353b48;
     --card-text: #ffffff;
-    --nav-bg: rgba(30, 39, 46, 0.85);
+    --nav-bg: rgba(30, 39, 46, 0.95);
+    --card-hover-shadow: rgba(0, 184, 212, 0.2);
+    --card-gradient: rgba(0, 184, 212, 0.9);
 }
 
 /* General Body Styling */
@@ -16,92 +18,133 @@ body {
     margin: 0;
     padding: 0;
     overflow-x: hidden;
+    min-height: 100vh;
+    line-height: 1.6;
 }
 
 /* Navigation Bar Styling */
 .nav {
     background: var(--nav-bg);
-    padding: 1rem 0;
+    padding: clamp(0.5rem, 2vw, 1rem);
     position: fixed;
     width: 100%;
     top: 0;
     left: 0;
     z-index: 10;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: background 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
 }
 
 .nav-links {
     list-style: none;
     display: flex;
     justify-content: center;
-    gap: 2rem;
+    align-items: center;
+    gap: clamp(0.5rem, 3vw, 2rem);
     margin: 0;
+    padding: 0;
+    flex-wrap: wrap;
 }
 
 .nav-links a {
     color: var(--primary-text);
     text-decoration: none;
     font-weight: 500;
-    font-size: 1.1rem;
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
     padding: 0.5rem;
-    transition: color 0.3s ease;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 50%;
+    background-color: var(--highlight);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.nav-links a:hover::after {
+    width: 100%;
 }
 
 .nav-links a:hover {
     color: var(--highlight);
 }
 
-
+/* Projects Section */
 .projects {
-    padding: 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
+    padding: clamp(1rem, 5vw, 2rem);
+    max-width: 1400px;
+    margin: 5rem auto 2rem;
 }
 
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    padding: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+    gap: clamp(1.5rem, 3vw, 2.5rem);
+    padding: clamp(1rem, 2vw, 2rem);
 }
 
 .project-card {
-    text-decoration: none; /* Remove default link styling */
     background-color: var(--card-bg);
-    border-radius: 8px;
+    border-radius: 15px;
     overflow: hidden;
-    transition: transform 0.3s, box-shadow 0.3s;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     cursor: pointer;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.project-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, 
+        var(--card-gradient),
+        transparent 50%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
 }
 
 .project-card::after {
     content: 'View Project →';
     position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 1rem;
-    background: linear-gradient(to top, rgba(0,184,212,0.9), transparent);
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    padding: 0.8rem 1.5rem;
+    background: var(--highlight);
     color: white;
-    text-align: center;
+    border-radius: 25px;
     opacity: 0;
-    transition: opacity 0.3s;
+    transition: all 0.4s ease;
 }
 
 .project-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transform: translateY(-8px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.project-card:hover::before {
+    opacity: 1;
 }
 
 .project-card:hover::after {
     opacity: 1;
+    transform: translateX(-50%) translateY(0);
 }
 
 .project-image {
     width: 100%;
-    height: 200px;
+    aspect-ratio: 16/9;
     overflow: hidden;
 }
 
@@ -109,120 +152,132 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.3s;
+    transition: transform 0.6s ease;
 }
 
 .project-card:hover .project-image img {
-    transform: scale(1.05);
+    transform: scale(1.08);
 }
 
 .project-content {
-    padding: 1.5rem;
+    padding: clamp(1.2rem, 3vw, 1.8rem);
+    position: relative;
+    z-index: 1;
+    flex-grow: 1;
 }
 
 .project-content h3 {
-    margin-bottom: 0.5rem;
-    color: #00b8d4;
+    margin: 0 0 0.8rem;
+    color: var(--highlight);
+    font-size: clamp(1.2rem, 2.5vw, 1.4rem);
+    font-weight: 600;
 }
 
 .project-content p {
-    color: #cccccc;
-    line-height: 1.4;
+    color: var(--card-text);
+    margin: 0;
+    font-size: clamp(0.9rem, 2vw, 1rem);
+    opacity: 0.9;
 }
 
-/* Animation for scroll reveal */
-.scroll-reveal {
-    opacity: 0;
-    transform: translateY(20px);
-    animation: reveal 0.5s ease forwards;
-}
-
-@keyframes reveal {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Responsive design */
-@media (max-width: 768px) {
-    .projects-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .nav-links {
-        padding-left: 0%;
-        margin-left: 0%;
-        gap: 0.5rem;
-        font-size: 8;
-    }
-}
-
- /* New styles for GitHub section */
- .github-section {
+/* GitHub Section */
+.github-section {
     text-align: center;
-    padding: 2rem;
+    padding: clamp(2rem, 5vw, 3rem);
     background-color: var(--card-bg);
-    border-radius: 8px;
-    margin: 2rem auto;
-    max-width: 800px;
+    border-radius: 20px;
+    margin: clamp(2rem, 5vw, 4rem) auto;
+    max-width: min(90%, 800px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
 }
 
 .github-section h2 {
-    color: #00b8d4;
-    margin-bottom: 1rem;
+    color: var(--highlight);
+    font-size: clamp(1.8rem, 3vw, 2.2rem);
+    margin-bottom: clamp(1rem, 2vw, 1.5rem);
 }
 
 .github-section p {
-    color: #cccccc;
-    margin-bottom: 1.5rem;
+    color: var(--card-text);
+    font-size: clamp(1rem, 2vw, 1.1rem);
+    margin-bottom: clamp(1.5rem, 3vw, 2rem);
+    opacity: 0.9;
 }
 
 .github-link {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
-    padding: 0.8rem 1.5rem;
-    background-color: #00b8d4;
+    gap: 0.8rem;
+    padding: clamp(0.8rem, 2vw, 1rem) clamp(1.5rem, 3vw, 2rem);
+    background-color: var(--highlight);
     color: white;
     text-decoration: none;
-    border-radius: 25px;
+    border-radius: 30px;
     transition: all 0.3s ease;
+    font-size: clamp(0.9rem, 2vw, 1rem);
+    font-weight: 500;
 }
 
 .github-link:hover {
-    background-color: #00d4ff;
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0, 184, 212, 0.3);
+    background-color: var(--accent);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px var(--card-hover-shadow);
 }
 
-/* GitHub icon */
 .github-icon {
-    width: 24px;
-    height: 24px;
+    width: clamp(20px, 4vw, 24px);
+    height: clamp(20px, 4vw, 24px);
 }
 
-/* Animation for scroll reveal */
+/* Scroll Reveal Animation */
 .scroll-reveal {
     opacity: 0;
-    transform: translateY(20px);
-    animation: reveal 0.5s ease forwards;
+    transform: translateY(30px);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-@keyframes reveal {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.scroll-reveal.active {
+    opacity: 1;
+    transform: translateY(0);
 }
 
-/* Responsive design */
+/* Media Queries */
 @media (max-width: 768px) {
-    .projects-grid {
-        grid-template-columns: 1fr;
+    .nav-links {
+        gap: 1rem;
+        padding: 0 1rem;
     }
 
-    .github-section {
-        margin: 1rem;
+    .projects {
+        margin-top: 4rem;
+    }
+
+    .project-card::after {
+        font-size: 0.9rem;
+        padding: 0.6rem 1.2rem;
+    }
+}
+
+@media (min-width: 1200px) {
+    .projects-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Print Styles */
+@media print {
+    .nav {
+        position: static;
+        box-shadow: none;
+    }
+
+    .project-card {
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+
+    .project-card::after,
+    .project-card::before {
+        display: none;
     }
 }
