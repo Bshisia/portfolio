@@ -244,7 +244,7 @@ body {
 /* Media Queries */
 @media (max-width: 768px) {
     .nav-links {
-        gap: 1rem;
+        gap: 0.2rem;
         padding: 0 1rem;
     }
 
