@@ -16,97 +16,133 @@ body {
     margin: 0;
     padding: 0;
     overflow-x: hidden;
+    min-height: 100vh;
+    width: 100%;
 }
 
 /* Navigation Bar Styling */
 .nav {
     background: var(--nav-bg);
-    padding: 1rem 0;
+    padding: 1rem;
     position: fixed;
     width: 100%;
     top: 0;
     left: 0;
     z-index: 10;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: background 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .nav-links {
     list-style: none;
     display: flex;
     justify-content: center;
-    gap: 2rem;
+    align-items: center;
+    gap: clamp(1rem, 4vw, 2rem);
     margin: 0;
+    padding: 0;
+    flex-wrap: wrap;
 }
 
 .nav-links a {
     color: var(--primary-text);
     text-decoration: none;
     font-weight: 500;
-    font-size: 1.1rem;
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
     padding: 0.5rem;
     transition: color 0.3s ease;
+    white-space: nowrap;
 }
 
 .nav-links a:hover {
     color: var(--highlight);
 }
 
-
 /* Hero Section */
 .owner {
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    text-align: center;
-    padding-top: 5rem;
+    flex-wrap: wrap;
+    gap: 2rem;
+    padding: clamp(1rem, 5vw, 5rem);
+    margin-top: 4rem;
 }
 
 .owner-content {
     z-index: 1;
     color: var(--hero-text-color);
     max-width: 700px;
+    padding: 1rem;
+    flex: 1;
+    min-width: 280px;
 }
 
 .owner h1 {
-    font-size: 4rem;
+    font-size: clamp(2rem, 6vw, 4rem);
     margin-bottom: 1rem;
     animation: fadeInUp 1s forwards;
     font-weight: 600;
+    line-height: 1.2;
 }
 
 .owner p {
-    font-size: 1.5rem;
+    font-size: clamp(1.1rem, 3vw, 1.5rem);
     margin-bottom: 2rem;
     animation: fadeInUp 1s 0.5s forwards;
 }
 
 .owner-image {
-    width: 300px;
-    height: 300px;
+    width: clamp(200px, 30vw, 300px);
+    height: clamp(200px, 30vw, 300px);
     border-radius: 50%;
     object-fit: cover;
     animation: float 6s ease-in-out infinite;
     box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
 }
 
+/* Button Styles */
+.btn {
+    background: var(--secondary);
+    color: white;
+    padding: clamp(0.8rem, 2vw, 1rem) clamp(1.5rem, 3vw, 2rem);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: clamp(0.9rem, 2vw, 1rem);
+}
+
+.btn:hover {
+    background: var(--accent);
+    transform: translateY(-2px);
+}
+
+/* Animations */
 @keyframes float {
     0%, 100% {
-        transform: translateY(-50%) translateX(0px);
+        transform: translateY(0px);
     }
     50% {
-        transform: translateY(-50%) translateX(20px);
+        transform: translateY(-20px);
     }
 }
 
 @keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
     to {
         opacity: 1;
         transform: translateY(0);
     }
 }
 
+/* Page Transitions */
 .page {
     display: none;
     opacity: 0;
@@ -118,50 +154,31 @@ body {
     opacity: 1;
 }
 
-/* Button Styles */
-.btn {
-    background: var(--secondary);
-    color: white;
-    padding: 1rem 2rem;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-transform: uppercase;
-    font-weight: 500;
-}
-
-.btn:hover {
-    background: var(--accent);
-    transform: translateY(-2px);
-}
-
-/* Responsive design */
+/* Mobile-first breakpoints */
 @media (max-width: 768px) {
-    .projects-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .nav {
-        padding-left: 0%;
+    .owner {
+        flex-direction: column-reverse;
+        text-align: center;
+        padding-top: 5rem;
     }
 
     .nav-links {
-        padding-left: 0%;
-        margin-left: 0%;
-        gap: 0.5rem;
-        font-size: 8;
+        justify-content: space-around;
+        padding: 0 1rem;
     }
 
     .owner-content {
-        padding-top: 0%;
-        margin-top: 0%;
-        font-size: small;
+        padding: 0 1rem;
+    }
+}
+
+/* Larger screens */
+@media (min-width: 1200px) {
+    .owner {
+        gap: 4rem;
     }
 
-    .owner-image {
-        min-width: 100px;
-        max-height: auto;
-        padding-top: 0%;
+    .owner-content {
+        padding: 0 2rem;
     }
 }
