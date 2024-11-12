@@ -48,6 +48,10 @@ body {
 }
 
 .nav-links a {
+    background: linear-gradient(90deg, #008000, #0000ff, #4b0082, #ee82ee);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
     color: var(--primary-text);
     text-decoration: none;
     font-weight: 500;
@@ -220,8 +224,8 @@ body {
         gap: 1rem;
     }
 
-    .nav-links a {
-        padding: 0.5rem;
+    .nav-links {
+        gap: 1rem;
     }
 
     .page-header {
