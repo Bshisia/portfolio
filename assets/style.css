@@ -44,7 +44,7 @@ body {
 }
 
 .nav-links a {
-    background: linear-gradient(90deg, #008000, #0000ff, #4b0082, #ee82ee);
+    background: linear-gradient(90deg, #800000, #ffe600, #0f8200, #f30df3);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;

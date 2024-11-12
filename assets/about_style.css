@@ -48,10 +48,11 @@ body {
 }
 
 .nav-links a {
-    background: linear-gradient(90deg, #008000, #0000ff, #4b0082, #ee82ee);
+    background: linear-gradient(90deg, #800000, #ffe600, #0f8200, #f30df3);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
+    color: var(--primary-text);
     text-decoration: none;
     font-weight: 500;
     font-size: clamp(0.9rem, 2vw, 1.1rem);
@@ -79,6 +80,7 @@ body {
 .nav-links a:hover {
     color: var(--highlight);
 }
+
 .page {
     max-width: 1200px;
     margin: 6rem auto 2rem;
