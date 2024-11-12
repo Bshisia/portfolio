@@ -4,392 +4,114 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projects</title>
+    <meta name="description" content="Portfolio of web development and programming projects">
+    <title>My Portfolio Projects</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- <link rel="stylesheet" href="assets/projects_style.css"> -->
+    <link rel="stylesheet" href="/assets/projects_style.css">
 </head>
 
 <body>
-    <style>
-        :root {
-            --primary-bg: #1e272e;
-            --primary-text: #dcdde1;
-            --highlight: #00a8ff;
-            --accent: #fbc531;
-            --card-bg: #353b48;
-            --card-text: #ffffff;
-            --nav-bg: rgba(30, 39, 46, 0.95);
-            --card-hover-shadow: rgba(0, 184, 212, 0.2);
-            --card-gradient: rgba(0, 184, 212, 0.9);
-        }
-
-        /* General Body Styling */
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--primary-bg);
-            color: var(--primary-text);
-            margin: 0;
-            padding: 0;
-            overflow-x: hidden;
-            min-height: 100vh;
-            line-height: 1.6;
-        }
-
-        /* Navigation Bar Styling */
-        .nav {
-            background: var(--nav-bg);
-            padding: clamp(0.5rem, 2vw, 1rem);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            left: 0;
-            z-index: 10;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            backdrop-filter: blur(10px);
-        }
-
-        .nav-links {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: clamp(0.5rem, 3vw, 2rem);
-            margin: 0;
-            padding: 0;
-            flex-wrap: wrap;
-        }
-
-        .nav-links a {
-            color: var(--primary-text);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: clamp(0.9rem, 2vw, 1.1rem);
-            padding: 0.5rem;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: 0;
-            left: 50%;
-            background-color: var(--highlight);
-            transition: all 0.3s ease;
-            transform: translateX(-50%);
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        .nav-links a:hover {
-            color: var(--highlight);
-        }
-
-        /* Projects Section */
-        .projects {
-            padding: clamp(1rem, 5vw, 2rem);
-            max-width: 1400px;
-            margin: 5rem auto 2rem;
-        }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
-            gap: clamp(1.5rem, 3vw, 2.5rem);
-            padding: clamp(1rem, 2vw, 2rem);
-        }
-
-        .project-card {
-            background-color: var(--card-bg);
-            border-radius: 15px;
-            overflow: hidden;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            cursor: pointer;
-            text-decoration: none;
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-        }
-
-        .project-card::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to top,
-                    var(--card-gradient),
-                    transparent 50%);
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-
-        .project-card::after {
-            content: 'View Project →';
-            position: absolute;
-            bottom: 1.5rem;
-            left: 50%;
-            transform: translateX(-50%) translateY(20px);
-            padding: 0.8rem 1.5rem;
-            background: var(--highlight);
-            color: white;
-            border-radius: 25px;
-            opacity: 0;
-            transition: all 0.4s ease;
-        }
-
-        .project-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        .project-card:hover::before {
-            opacity: 1;
-        }
-
-        .project-card:hover::after {
-            opacity: 1;
-            transform: translateX(-50%) translateY(0);
-        }
-
-        .project-image {
-            width: 100%;
-            aspect-ratio: 16/9;
-            overflow: hidden;
-        }
-
-        .project-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.6s ease;
-        }
-
-        .project-card:hover .project-image img {
-            transform: scale(1.08);
-        }
-
-        .project-content {
-            padding: clamp(1.2rem, 3vw, 1.8rem);
-            position: relative;
-            z-index: 1;
-            flex-grow: 1;
-        }
-
-        .project-content h3 {
-            margin: 0 0 0.8rem;
-            color: var(--highlight);
-            font-size: clamp(1.2rem, 2.5vw, 1.4rem);
-            font-weight: 600;
-        }
-
-        .project-content p {
-            color: var(--card-text);
-            margin: 0;
-            font-size: clamp(0.9rem, 2vw, 1rem);
-            opacity: 0.9;
-        }
-
-        /* GitHub Section */
-        .github-section {
-            text-align: center;
-            padding: clamp(2rem, 5vw, 3rem);
-            background-color: var(--card-bg);
-            border-radius: 20px;
-            margin: clamp(2rem, 5vw, 4rem) auto;
-            max-width: min(90%, 800px);
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
-        }
-
-        .github-section h2 {
-            color: var(--highlight);
-            font-size: clamp(1.8rem, 3vw, 2.2rem);
-            margin-bottom: clamp(1rem, 2vw, 1.5rem);
-        }
-
-        .github-section p {
-            color: var(--card-text);
-            font-size: clamp(1rem, 2vw, 1.1rem);
-            margin-bottom: clamp(1.5rem, 3vw, 2rem);
-            opacity: 0.9;
-        }
-
-        .github-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.8rem;
-            padding: clamp(0.8rem, 2vw, 1rem) clamp(1.5rem, 3vw, 2rem);
-            background-color: var(--highlight);
-            color: white;
-            text-decoration: none;
-            border-radius: 30px;
-            transition: all 0.3s ease;
-            font-size: clamp(0.9rem, 2vw, 1rem);
-            font-weight: 500;
-        }
-
-        .github-link:hover {
-            background-color: var(--accent);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px var(--card-hover-shadow);
-        }
-
-        .github-icon {
-            width: clamp(20px, 4vw, 24px);
-            height: clamp(20px, 4vw, 24px);
-        }
-
-        /* Scroll Reveal Animation */
-        .scroll-reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .scroll-reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Media Queries */
-        @media (max-width: 768px) {
-            .nav-links {
-                gap: 0.2rem;
-                padding: 0 1rem;
-            }
-
-            .projects {
-                margin-top: 4rem;
-            }
-
-            .project-card::after {
-                font-size: 0.9rem;
-                padding: 0.6rem 1.2rem;
-            }
-        }
-
-        @media (min-width: 1200px) {
-            .projects-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
-
-        /* Print Styles */
-        @media print {
-            .nav {
-                position: static;
-                box-shadow: none;
-            }
-
-            .project-card {
-                break-inside: avoid;
-                page-break-inside: avoid;
-            }
-
-            .project-card::after,
-            .project-card::before {
-                display: none;
-            }
-        }
-    </style>
     <nav class="nav">
         <ul class="nav-links">
-            <li>
-                <a href="index.html" data-page="home">
-                    <i class="fas fa-home"></i>
-                    Home
-                </a>
-            </li>
-            <li>
-                <a href="#" data-page="projects">
-                    <i class="fas fa-code"></i>
-                    Projects
-                </a>
-            </li>
-            <li>
-                <a href="about.html" data-page="about">
-                    <i class="fas fa-user"></i>
-                    About
-                </a>
-            </li>
-            <li>
-                <a href="contacts.html" data-page="contact">
-                    <i class="fas fa-envelope"></i>
-                    Contact
-                </a>
-            </li>
+            <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="#projects"><i class="fas fa-code"></i> Projects</a></li>
+            <li><a href="about.html"><i class="fas fa-user"></i> About</a></li>
+            <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
         </ul>
     </nav>
-    <div id="projects" class="page">
-        <section class="projects">
-            <div class="projects-grid">
-                <a href="https://github.com/yourusername/ascii-art" class="project-card scroll-reveal">
-                    <div class="project-image">
-                        <img src="assets/images/Ascii-Art.png" alt="ascii-art">
+
+    <header class="page-header">
+        <h1>My Projects</h1>
+        <p>A collection of my recent work in web development and programming</p>
+    </header>
+
+    <section class="projects" id="projects">
+        <div class="projects-grid">
+            <a href="https://github.com/yourusername/ascii-art" class="project-card">
+                <div class="project-image">
+                    <img src="assets/images/Ascii-Art.png" alt="ASCII Art Project Screenshot">
+                </div>
+                <div class="project-content">
+                    <div class="project-tags">
+                        <span class="project-tag">Go</span>
+                        <span class="project-tag">CLI</span>
                     </div>
-                    <div class="project-content">
-                        <h3>Project 1</h3>
-                        <p>Ascii Art</p>
+                    <h3>ASCII Art Generator</h3>
+                    <p>A command-line tool that converts text into ASCII art with multiple styling options.</p>
+                </div>
+            </a>
+
+            <a href="https://learn.zone01kisumu.ke/git/jamos/ascii-art-web-stylize" class="project-card">
+                <div class="project-image">
+                    <img src="assets/images/Ascii Art Web.png" alt="ASCII Art Web Interface Screenshot">
+                </div>
+                <div class="project-content">
+                    <div class="project-tags">
+                        <span class="project-tag">Go</span>
+                        <span class="project-tag">Web</span>
+                        <span class="project-tag">HTML</span>
                     </div>
-                </a>
-                <a href="https://learn.zone01kisumu.ke/git/jamos/ascii-art-web-stylize"
-                    class="project-card scroll-reveal">
-                    <div class="project-image">
-                        <img src="assets/images/Ascii Art Web.png" alt="Ascii-Art-Web">
+                    <h3>ASCII Art Web</h3>
+                    <p>Web interface for the ASCII art generator with real-time preview and custom styling options.</p>
+                </div>
+            </a>
+
+            <a href="https://learn.zone01kisumu.ke/git/moonyango/groupie-tracker-filters" class="project-card">
+                <div class="project-image">
+                    <img src="assets/images/groupie-tracker.png" alt="Groupie Tracker Screenshot">
+                </div>
+                <div class="project-content">
+                    <div class="project-tags">
+                        <span class="project-tag">API</span>
+                        <span class="project-tag">JavaScript</span>
                     </div>
-                    <div class="project-content">
-                        <h3>Project 2</h3>
-                        <p>Ascii-Art-Web</p>
+                    <h3>Groupie Tracker</h3>
+                    <p>Interactive web application for tracking and filtering music artist data and concert information.
+                    </p>
+                </div>
+            </a>
+
+            <a href="https://learn.zone01kisumu.ke/git/bshisia/sortable" class="project-card">
+                <div class="project-image">
+                    <img src="assets/images/Sortable..png" alt="Sortable Project Screenshot">
+                </div>
+                <div class="project-content">
+                    <div class="project-tags">
+                        <span class="project-tag">JavaScript</span>
+                        <span class="project-tag">Algorithms</span>
                     </div>
-                </a>
-                <a href="https://learn.zone01kisumu.ke/git/moonyango/groupie-tracker-filters"
-                    class="project-card scroll-reveal">
-                    <div class="project-image">
-                        <img src="assets/images/groupie-tracker.png" alt="groupie-tracker">
+                    <h3>Sortable</h3>
+                    <p>Visual representation of various sorting algorithms with interactive controls and comparisons.
+                    </p>
+                </div>
+            </a>
+
+            <a href="https://learn.zone01kisumu.ke/git/hiombima/clonernews" class="project-card">
+                <div class="project-image">
+                    <img src="assets/images/Clonernews.png" alt="Clonernews Screenshot">
+                </div>
+                <div class="project-content">
+                    <div class="project-tags">
+                        <span class="project-tag">JavaScript</span>
+                        <span class="project-tag">Web</span>
                     </div>
-                    <div class="project-content">
-                        <h3>Project 3</h3>
-                        <p>Groupie-Tracker</p>
-                    </div>
-                </a>
-                <a href="https://learn.zone01kisumu.ke/git/bshisia/sortable" class="project-card scroll-reveal">
-                    <div class="project-image">
-                        <img src="assets/images/Sortable..png" alt="Clonernews">
-                    </div>
-                    <div class="project-content">
-                        <h3>Project 3</h3>
-                        <p>Sortable</p>
-                    </div>
-                </a>
-                <a href="https://learn.zone01kisumu.ke/git/hiombima/clonernews" class="project-card scroll-reveal">
-                    <div class="project-image">
-                        <img src="assets/images/Clonernews.png" alt="Clonernews">
-                    </div>
-                    <div class="project-content">
-                        <h3>Project 4</h3>
-                        <p>Clonernews</p>
-                    </div>
-                </a>
-            </div>
-        </section>
-    </div>
-    <div class="github-section scroll-reveal">
-        <h2>More Projects</h2>
-        <p>These are just a few highlights! Check out my GitHub profile for more projects and contributions.</p>
-        <a href="https://github.com/yourusername" class="github-link">
-            <svg class="github-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round">
-                <path
-                    d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
-                </path>
-            </svg>
-            Visit My GitHub Profile
-        </a>
-    </div>
-    <script src="assets/script.js"></script>
+                    <h3>Clonernews</h3>
+                    <p>A Hacker News clone with custom features and enhanced user experience.</p>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <section class="github-section">
+        <div class="github-content">
+            <h2>Explore More</h2>
+            <p>Visit my GitHub profile to see more projects, contributions, and ongoing work.</p>
+            <a href="https://github.com/yourusername" class="github-link">
+                <i class="fab fa-github"></i>
+                View GitHub Profile
+            </a>
+        </div>
+    </section>
 </body>
 
 </html>
