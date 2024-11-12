@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Me</title>
+    <title>About Me | Software Developer</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="assets/about_style.css">
 </head>
@@ -11,43 +11,72 @@
     <nav class="nav">
         <ul class="nav-links">
             <li>
-                <a href="index.html" data-page="home">
+                <a href="index.html">
                     <i class="fas fa-home"></i>
-                    Home
+                    <span>Home</span>
                 </a>
             </li>
             <li>
-                <a href="projects.html" data-page="projects">
+                <a href="projects.html">
                     <i class="fas fa-code"></i>
-                    Projects
+                    <span>Projects</span>
                 </a>
             </li>
             <li>
-                <a href="#" data-page="about">
+                <a href="#" class="active">
                     <i class="fas fa-user"></i>
-                    About
+                    <span>About</span>
                 </a>
             </li>
             <li>
-                <a href="contacts.html" data-page="contact">
+                <a href="contacts.html">
                     <i class="fas fa-envelope"></i>
-                    Contact
+                    <span>Contact</span>
                 </a>
             </li>
         </ul>
     </nav>
-    <div id="about" class="page">
-        <section class="about scroll-reveal">
-            <div class="profile-image">
-                <img src="assets/images/Zone01_Profile.png" alt="profile-image" width="400" height="400" class="owner-image">
+
+    <div class="page">
+        <section class="about fade-in">
+            <div class="profile-container">
+                <div class="profile-image">
+                    <img src="assets/images/Zone01_Profile.png" alt="Professional headshot" width="400" height="400">
+                    <div class="profile-frame"></div>
+                    <div class="corner corner-tl"></div>
+                    <div class="corner corner-tr"></div>
+                    <div class="corner corner-bl"></div>
+                    <div class="corner corner-br"></div>
+                </div>
             </div>
             <div class="about-content">
-                <h2>About Me</h2>
-                <p>I am an apprentice software developer at <a href="https://learn.zone01kisumu.ke">Zone01 Kisumu</a> currently training in Go, JavaScript and Rust. I also have some experience on UX and am also soon going to learn UI</p>
-                <div class="tech-stack">
-                    <div class="tech-item"><a href="https://go.dev/">Go</a></div>
-                    <div class="tech-item"><a href="https://www.w3schools.com/js/">JavaScript</a></div>
-                    <div class="tech-item"><a href="https://www.rust-lang.org/">Rust</a></div>
+                <div>
+                    <h2>About Me</h2>
+                    <p>
+                        I am a passionate software developer apprentice at <a href="https://learn.zone01kisumu.ke" target="_blank" rel="noopener noreferrer">Zone01 Kisumu</a>, 
+                        specializing in modern web technologies and systems programming. My current focus is on mastering Go, JavaScript, and Rust, while developing a keen eye for 
+                        user experience design. I'm particularly excited about expanding my skillset into UI development to create more intuitive and engaging digital experiences.
+                    </p>
+                </div>
+                <div>
+                    <h3 style="color: var(--accent); margin-bottom: 1rem;">Technical Stack</h3>
+                    <div class="tech-stack">
+                        <div class="tech-item">
+                            <a href="https://go.dev/" target="_blank" rel="noopener noreferrer">
+                                <i class="fas fa-code"></i>Go
+                            </a>
+                        </div>
+                        <div class="tech-item">
+                            <a href="https://www.javascript.com/" target="_blank" rel="noopener noreferrer">
+                                <i class="fab fa-js"></i>JavaScript
+                            </a>
+                        </div>
+                        <div class="tech-item">
+                            <a href="https://www.rust-lang.org/" target="_blank" rel="noopener noreferrer">
+                                <i class="fas fa-cog"></i>Rust
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>

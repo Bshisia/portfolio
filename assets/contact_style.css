@@ -50,16 +50,29 @@ body {
   color: var(--primary-text);
   text-decoration: none;
   font-weight: 500;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
+  padding: 0.5rem;
   transition: all 0.3s ease;
+  position: relative;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 50%;
+  background-color: var(--highlight);
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.nav-links a:hover::after {
+  width: 100%;
 }
 
 .nav-links a:hover {
-  background: var(--secondary-bg);
   color: var(--highlight);
 }
 
@@ -72,6 +85,21 @@ body {
 .contact-header {
   text-align: center;
   margin-bottom: 3rem;
+}
+
+.contact-header p {
+  background: linear-gradient(90deg, #ff0000, #00ff00, #0000ff, #ff0000);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient-flow 30s linear infinite;
+}
+
+
+@keyframes gradient-flow {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 300% 50%; }
 }
 
 .contact-header h1 {

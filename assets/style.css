@@ -46,19 +46,31 @@ body {
 .nav-links a {
     color: var(--primary-text);
     text-decoration: none;
-    font-size: 0.95rem;
     font-weight: 500;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
+    padding: 0.5rem;
     transition: all 0.3s ease;
-    padding: 0.5rem 1rem;
-    border-radius: 0.5rem;
+    position: relative;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 50%;
+    background-color: var(--highlight);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.nav-links a:hover::after {
+    width: 100%;
 }
 
 .nav-links a:hover {
     color: var(--highlight);
-    background: rgba(59, 130, 246, 0.1);
 }
 
 .home-container {
@@ -95,6 +107,10 @@ body {
 }
 
 .owner-content p {
+    background: linear-gradient(90deg, #ff0000, #ffa500, #ffff00, #008000, #0000ff, #4b0082, #ee82ee);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
     font-size: clamp(1.1rem, 2vw, 1.5rem);
     color: #94a3b8;
     margin-bottom: 2.5rem;
@@ -110,7 +126,7 @@ body {
     object-fit: cover;
     border: 4px solid rgba(59, 130, 246, 0.2);
     box-shadow: 0 0 40px rgba(59, 130, 246, 0.15);
-    animation: float 6s ease-in-out infinite;
+    animation: pulse 6s ease-in-out infinite;
 }
 
 .button-group {

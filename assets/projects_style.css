@@ -236,3 +236,63 @@ body {
         padding: 1rem;
     }
 }
+
+.animated-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.particle {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: var(--accent);
+    border-radius: 50%;
+    opacity: 0.3;
+}
+
+.flow-line {
+    position: absolute;
+    width: 150px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    opacity: 0.2;
+    transform-origin: left;
+}
+
+.code-block {
+    position: absolute;
+    font-family: monospace;
+    color: var(--accent);
+    opacity: 0.1;
+    font-size: 14px;
+    white-space: nowrap;
+    animation: float-up 15s linear infinite;
+}
+
+.glow-orb {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
+    opacity: 0.1;
+    filter: blur(40px);
+    animation: pulse 4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 0.1; }
+    50% { transform: scale(1.2); opacity: 0.15; }
+}
+
+@keyframes float-up {
+    0% { transform: translateY(100vh); opacity: 0.1; }
+    100% { transform: translateY(-100px); opacity: 0; }
+}
