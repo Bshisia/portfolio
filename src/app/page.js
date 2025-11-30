@@ -19,15 +19,15 @@ export default function Home() {
           <div className="grid md:grid-cols-3 gap-8 mt-12">
             <div className="bg-black/50 border border-orange-500/30 p-6 rounded-lg backdrop-blur-sm">
               <h3 className="text-orange-400 font-mono text-lg mb-3">Frontend</h3>
-              <p className="text-orange-300 text-sm">React, Next.js, TypeScript, Tailwind CSS</p>
+              <p className="text-orange-300 text-sm">React, Next.js, Sveltekit, TypeScript, Tailwind CSS</p>
             </div>
             <div className="bg-black/50 border border-orange-500/30 p-6 rounded-lg backdrop-blur-sm">
               <h3 className="text-orange-400 font-mono text-lg mb-3">Backend</h3>
-              <p className="text-orange-300 text-sm">Node.js, Python, PostgreSQL, MongoDB</p>
+              <p className="text-orange-300 text-sm">Golang, Node.js, Python, PostgreSQL, MySql</p>
             </div>
             <div className="bg-black/50 border border-orange-500/30 p-6 rounded-lg backdrop-blur-sm">
               <h3 className="text-orange-400 font-mono text-lg mb-3">Tools</h3>
-              <p className="text-orange-300 text-sm">Git, Docker, AWS, Linux</p>
+              <p className="text-orange-300 text-sm">Git, Docker, Linux, Figma</p>
             </div>
           </div>
           
